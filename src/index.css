@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url(http://res.cloudinary.com/ursularodgers/image/upload/v1511179426/spring_pgvvyo.jpg);
+  background-repeat:no-repeat;
+  background-position:top center;
+  background-attachment:fixed;	
+  background-size:cover;
+  height:100%;
+  max-width:100%;
+}
+
+.container {
+	position:relative;
+	top:40px;
+	height:80%;
+	max-width:90%;
+   	margin: 0 auto;
+   	background:rgba(255,255,255,0.7);
+   	border-radius:10px;
+}

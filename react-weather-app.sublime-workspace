@@ -1,0 +1,559 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"FET",
+				"FETCH_POST"
+			],
+			[
+				"form",
+				"formReducer"
+			],
+			[
+				"pos",
+				"PostsReducer"
+			],
+			[
+				"city",
+				"cityTemp"
+			],
+			[
+				"ci",
+				"cityData"
+			],
+			[
+				"render",
+				"renderWeather"
+			],
+			[
+				"Ci",
+				"CityWeatherList"
+			],
+			[
+				"root",
+				"rootReducer"
+			],
+			[
+				"on",
+				"onInputChange"
+			],
+			[
+				"map",
+				"mapStateToProps"
+			],
+			[
+				"video",
+				"videoSearch"
+			],
+			[
+				"vide",
+				"videoId"
+			],
+			[
+				"ser",
+				"serviceWorker"
+			],
+			[
+				"C",
+				"Component"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"background",
+				"background-image"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"Ingredient",
+				"IngredientList"
+			],
+			[
+				"new",
+				"newRecipe"
+			],
+			[
+				"Ingredien",
+				"IngredientList"
+			],
+			[
+				"INgred",
+				"IngredientList"
+			],
+			[
+				"ingred",
+				"ingredient"
+			],
+			[
+				"su",
+				"submitRecipe"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"experie",
+				"experiencesArray"
+			],
+			[
+				"sound",
+				"soundOff"
+			],
+			[
+				"play",
+				"playSound"
+			],
+			[
+				"rand",
+				"randomNumberArray"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "import React, { Component } from 'react';\nimport { fetchDefaultLocation } from './actions';\nimport './index.css';\n\nclass Default extends Component {\n  constructor (props) {\n  \t\n  }\n  \n  render() {\n    return (\n      <div className=\"container\">\n        <h1>{ this.props.location.city }</h1>\n      </div>\n    );\n  }\n}\n\nexport default Default;\n\n",
+			"file": "src/Default.js",
+			"file_size": 327,
+			"file_write_time": 131558185447806863,
+			"settings":
+			{
+				"buffer_size": 342,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/reducers/reducer_default_location.js",
+			"settings":
+			{
+				"buffer_size": 209,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/reducers/index.js",
+			"settings":
+			{
+				"buffer_size": 302,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/index.js",
+			"settings":
+			{
+				"buffer_size": 453,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Ursula/workspace/weather_app",
+		"/C/Users/Ursula/workspace/weather_app/react-weather-app",
+		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src",
+		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src/reducers"
+	],
+	"file_history":
+	[
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/index.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/containers/city_weather_list.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/containers/searchbar.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/reducers/index.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/actions/index.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/reducers/reducer_weather.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/components/posts_index.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/components/post_show.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/index.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/components/posts_new.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/actions/index.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/reducers/reducer_posts.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/package.json",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/index.css",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/public/index.html",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/index.css",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/reducers/index.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/components/data.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/components/google_map.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/src/posts_index.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/public/index.html",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/reducers/reducer_posts.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/package.json",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/App.js",
+		"/C/Users/Ursula/workspace/react_redux/Router_Forms/forms/node_modules/react-router-dom/es/BrowserRouter.js",
+		"/C/Users/Ursula/workspace/react_redux/weatherApp/weather_app/src/data.js",
+		"/C/Users/Ursula/workspace/react_redux/ReduxSimpleStarter/src/reducers/index.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/App.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/Containers/book-detail.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/Reducers/reducer_active_book.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/Reducers/index.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/Actions/index.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/Reducers/reducer_books.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/Containers/book_list.js",
+		"/C/Users/Ursula/workspace/react_redux/ReduxSimpleStarter/src/actions/index.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/src/index.js",
+		"/C/Users/Ursula/workspace/react_redux/ReduxSimpleStarter/src/containers/book_list.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/public/index.html",
+		"/C/Users/Ursula/workspace/react_redux/ReduxSimpleStarter/src/components/app.js",
+		"/C/Users/Ursula/workspace/react_redux/ReduxSimpleStarter/src/index.js",
+		"/C/Users/Ursula/workspace/react_redux/ReduxSimpleStarter/src/reducers/reducer_books.js",
+		"/C/Users/Ursula/workspace/react_redux/BookList/book-list/package.json",
+		"/C/Users/Ursula/workspace/react_redux/video-player/src/Components/video_list_item.js",
+		"/C/Users/Ursula/workspace/react_redux/video-player/src/Components/video_list.js",
+		"/C/Users/Ursula/workspace/react_redux/video-player/src/Components/video_detail.js",
+		"/C/Users/Ursula/workspace/react_redux/video-player/package.json",
+		"/C/Users/Ursula/workspace/react_redux/video-player/src/App.css",
+		"/C/Users/Ursula/workspace/react_redux/video-player/src/index.js",
+		"/C/Users/Ursula/workspace/react_redux/video-player/src/Components/search_bar.js",
+		"/C/Users/Ursula/workspace/react_redux/video-player/src/App.js",
+		"/C/Users/Ursula/workspace/react_redux/video-player/public/index.html",
+		"/C/Users/Ursula/workspace/mobileWeb/wittr/public/js/main/IndexController.js",
+		"/C/Users/Ursula/workspace/mobileWeb/wittr/public/js/sw/index.js",
+		"/C/Users/Ursula/workspace/LearningGit/README.md",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/Contact.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/CheckTrade.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/App.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/App.css",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/index.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/server/index.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/server/mailer/index.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/server/mailer/config/index.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/config.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/public/index.html",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/Contact.json",
+		"/C/Users/Ursula/workspace/Bootstrap 4.0/bootstrap-4.0.0-beta.2/docs/4.0/examples/narrow-jumbotron/index.html",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/MainImage.js",
+		"/C/Users/Ursula/workspace/Maciek/business-site/src/kitchen-349749.jpeg",
+		"/C/Users/Ursula/workspace/Bootstrap 4.0/bootstrap-4.0.0-beta.2/docs/4.0/examples/narrow-jumbotron/narrow-jumbotron.css",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/Ingredients.js",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/IngredientList.js",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/Submit.js",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/Home.js",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/index.css",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/App.css",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/index.js",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/src/App.js",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/public/index.html",
+		"/C/Users/Ursula/workspace/React_Projects/Recipe_App/love-to-eat/package.json",
+		"/C/Users/Ursula/workspace/React_Projects/resume/public/index.html",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/App.js",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/interests.js",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/education.js",
+		"/C/Users/Ursula/workspace/React_Projects/resume/public/assets/css/styles.css",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/resume.json",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/projects.js",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/languages.js",
+		"/C/Users/Ursula/workspace/React_Projects/resume/public/assets/css/styles-3.css",
+		"/C/Users/Ursula/workspace/React_Projects/resume/public/assets/css/styles-2.css",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/experiences.js",
+		"/C/Users/Ursula/workspace/React_Projects/resume/src/skills.js",
+		"/C/Users/Ursula/workspace/React_Projects/resume/orbit-v1.0/index.html",
+		"/C/Users/Ursula/workspace/React_Projects/resume/package.json",
+		"/C/Users/Ursula/workspace/React_Projects/easy_abc/my-app/src/App.css",
+		"/C/Users/Ursula/workspace/React_Projects/easy_abc/my-app/src/index.js",
+		"/C/Users/Ursula/workspace/React_Projects/easy_abc/my-app/src/Abc.js",
+		"/C/Users/Ursula/workspace/React_Projects/easy_abc/my-app/src/App.js",
+		"/C/Users/Ursula/workspace/React_Projects/easy_abc/my-app/src/abc.js",
+		"/C/Users/Ursula/workspace/React_Projects/Number_Game/my-app/src/App.js",
+		"/C/Users/Ursula/workspace/React_Projects/Number_Game/my-app/src/Quiz.js",
+		"/C/Users/Ursula/workspace/React_Projects/Number_Game/my-app/public/index.html",
+		"/C/Users/Ursula/workspace/React_Projects/Number_Game/my-app/src/QuizOptions.js",
+		"/C/Users/Ursula/workspace/React_Projects/Number_Game/my-app/src/App.css",
+		"/C/Users/Ursula/workspace/React_Projects/Number_Game/my-app/src/index.js",
+		"/C/Users/Ursula/workspace/React_Projects/Number_Game/my-app/package.json",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/App.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/index.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/Home.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/BlogSingle.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/Blog.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/package.json",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/RouteConfig.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/About.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/Contact.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/src/Test.js",
+		"/C/Users/Ursula/workspace/React_Intro/my-app/node_modules/react/package.json"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"class",
+			"*/}",
+			"{/*",
+			"*/}",
+			" {/*",
+			"class",
+			"for",
+			"class",
+			"//profile-container-->",
+			"<!--"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/Default.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/reducers/reducer_default_location.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/reducers/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								245,
+								245
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "react-weather-app.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 234.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

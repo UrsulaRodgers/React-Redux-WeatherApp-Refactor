@@ -8,14 +8,16 @@ class Default extends Component {
   render() {
     return (
       <div className="container">
-        <h1>{this.props.location.city}</h1>
+        <h1>{ this.props.location.city }</h1>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-	return {location: state.myLocation} 
+
+	console.log(state.myLocation)
+	return {location: state.myLocation}
 }
 
 export default connect (mapStateToProps)(Default);

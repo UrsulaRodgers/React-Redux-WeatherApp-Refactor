@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CurrentDate from './CurrentDate';
 import icon from '../icon.json';
+import wind from '../images/wind_24.png';
+import humidity from '../images/humidity.png';
 
 class Default extends Component {
   constructor (props) {
@@ -27,9 +29,9 @@ class Default extends Component {
   	this.setState ({
   		currentLocation: location.data.city,
   		country: location.data.countryCode,
-  		currentTemp: currentWeather.data.main.temp,
-  		minTemp: currentWeather.data.main.temp_min,
-  		maxTemp: currentWeather.data.main.temp_max,
+  		currentTemp: Math.round(currentWeather.data.main.temp- 273),
+  		minTemp: Math.round(currentWeather.data.main.temp_min - 273),
+  		maxTemp: Math.round(currentWeather.data.main.temp_max - 273),
   		wind: currentWeather.data.wind.speed,
   		humidity: currentWeather.data.main.humidity,
   		weatherIcon: currentWeather.data.weather[0].icon,
@@ -41,10 +43,22 @@ class Default extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="text-center">{this.state.currentLocation}, {this.state.country}</h1>
-        <h3 className="text-center"><CurrentDate /></h3>
-        <h3>{this.state.currentTemp}</h3>
-        <img alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
+        <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>
+        <h5 className="text-center"><i><CurrentDate /></i></h5><br />
+        <div className="row">
+        	<div className="col-6 my-auto">
+        		<img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
+        	</div>
+        	<div className="col-6">
+        		<span className="currentTemp">{this.state.currentTemp}&#8451;</span>
+        		<p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTemp}</span>
+        		&nbsp;<span><strong>LOW</strong> {this.state.minTemp}</span></p>
+        		<p className="description">{this.state.description}</p>
+        		<p className="otherIcons"><img src={wind}/>
+				&nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
+				<span>{this.state.humidity}</span></p>
+        	</div>
+        </div>
       </div>
     );
   }

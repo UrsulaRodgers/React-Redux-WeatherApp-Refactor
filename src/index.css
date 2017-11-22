@@ -33,16 +33,16 @@ body {
 }
 
 .currentTemp {
-  margin-left:5%;
+ 
   font-size: 2.1em;
 }
 
-.maxMin {
+.maxMin .description{
   font-size:0.8em;
-  margin-left:3%;
+ 
 }
-.description {
-  font-size:0.8em;
-  margin-left:7%;
+
+.right-panel {
+  float: left;
 }
 

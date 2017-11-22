@@ -35,7 +35,7 @@ class Default extends Component {
   		wind: currentWeather.data.wind.speed,
   		humidity: currentWeather.data.main.humidity,
   		weatherIcon: currentWeather.data.weather[0].icon,
-  		description: currentWeather.data.weather[0].description
+  		description: currentWeather.data.weather[0].main
   	});
   		
   }
@@ -50,13 +50,15 @@ class Default extends Component {
         		<img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
         	</div>
         	<div className="col-6">
-        		<span className="currentTemp">{this.state.currentTemp}&#8451;</span>
-        		<p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTemp}</span>
-        		&nbsp;<span><strong>LOW</strong> {this.state.minTemp}</span></p>
-        		<p className="description">{this.state.description}</p>
-        		<p className="otherIcons"><img src={wind}/>
-				&nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
-				<span>{this.state.humidity}</span></p>
+        		<div className="text-center right-panel">
+        			<span className="currentTemp">{this.state.currentTemp}&#8451;</span>
+        			<p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTemp}</span>
+        			&nbsp;<span><strong>LOW</strong> {this.state.minTemp}</span></p>
+        			<p className="description">{this.state.description}</p>
+        			<p className="otherIcons"><img src={wind}/>
+					&nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
+					<span>{this.state.humidity}</span></p>
+				</div>
         	</div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import CurrentDate from './CurrentDate';
 import icon from '../icon.json';
 import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
+import Forecast from './DefaultForecast';
 
 const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
 
@@ -48,23 +48,6 @@ class Default extends Component {
   render() {
    console.log(this.state.forecast)
 
-   const forecastBlock = this.state.forecast.slice(1).map((value,index) => {
-        return (
-          <div className="col-md-2 text-center" key={index}>
-            <div>
-              <strong>{(new Date(value.dt*1000)).toDateString().substring(0,3)}</strong>
-            </div>
-            <div>
-              <img className="forecastIcon" alt='' src={this.state.icon[value.weather[0].icon]} />
-            </div>
-              <div className="temps">
-                <span className="highTemp">{Math.round(value.temp.max - 273)}&#8451;</span>&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;<span className="lowTemp">{Math.round(value.temp.min - 273)}&#8451;</span>
-              </div>
-            </div>
-          )
-    })
-
     return (
       <div className="container">
         <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>
@@ -86,7 +69,7 @@ class Default extends Component {
         	</div>
         </div>
         <div className="row forecast">
-          {forecastBlock}
+          <Forecast forecast={this.state.forecast} icon={this.state.icon} />
         </div>
       </div>
     );

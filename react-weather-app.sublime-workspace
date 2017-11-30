@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"forecast",
+				"forecastBlock"
+			],
+			[
 				"Default",
 				"DefaultForecast"
 			],
@@ -143,22 +147,18 @@
 			"file": "src/components/Default.js",
 			"settings":
 			{
-				"buffer_size": 2766,
+				"buffer_size": 3424,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "import React, { Component } from 'react';\nimport axios from 'axios';\n\nclass DefaultForecast extends Component {\n\tconstructor(props){\n\t\tsuper(props)\n\n\t\tthis.state = { \n\t\t\tforecast: {}\n\t\t};\n\t}\n\n\tasync componentDidMount() {\n\t\t\n\t\tconst API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';\n\t\tconst location = await axios.get('http://ip-api.com/json');\n  \t\tconst lat = location.data.lat;\n  \t\tconst lon = location.data.lon;\n  \t\tconst forecast = await axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${API_KEY}`);\n\n\t\tthis.setState = {\n\t\t\tforecast: forecast.data.list\n\t\t}\n\t}\n\n\trender() {\n\n\t\treturn(\n\t\t<div className=\"row\">\n          <ul className=\"list-inline\">\n            {this.state.forecast.map(temp => <li className=\"list-inline-item\">{temp}</li> )}\n          </ul>\n        </div>\n\t\t);\n\t}\n}\n\nexport default DefaultForecast;",
-			"file": "src/components/DefaultForecast.js",
-			"file_size": 719,
-			"file_write_time": 131559967995412955,
+			"file": "src/index.css",
 			"settings":
 			{
-				"buffer_size": 858,
+				"buffer_size": 1102,
 				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "DefaultForecast.js"
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -166,6 +166,22 @@
 			"settings":
 			{
 				"buffer_size": 5721,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Ursula/workspace/weather_app/jQuery version/weather.html",
+			"settings":
+			{
+				"buffer_size": 4956,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Ursula/workspace/weather_app/jQuery version/weather.css",
+			"settings":
+			{
+				"buffer_size": 2040,
 				"line_ending": "Windows"
 			}
 		},
@@ -180,7 +196,10 @@
 			}
 		},
 		{
+			"contents": "import { FETCH_DEFAULT_LOCATION } from '../actions';\n\nexport default function(state={}, action) {\n\tswitch (action.type) {\n\t\tcase FETCH_DEFAULT_LOCATION:\n\t\t\treturn action.payload\n\t\tdefault:\n\t\t\treturn state\n\t}\n}",
 			"file": "src/reducers/reducer_default_location.js",
+			"file_size": 218,
+			"file_write_time": 131558182177310680,
 			"settings":
 			{
 				"buffer_size": 209,
@@ -188,7 +207,10 @@
 			}
 		},
 		{
+			"contents": "import { combineReducers } from 'redux';\nimport DefaultLocation from './reducer_default_location';\n\nconst rootReducer = combineReducers({\n  myLocation: DefaultLocation\n/*key:value pair where key is the piee of state, and value is the value of that state - the reducer*/\n});\n\nexport default rootReducer;",
 			"file": "src/reducers/index.js",
+			"file_size": 310,
+			"file_write_time": 131558181422633884,
 			"settings":
 			{
 				"buffer_size": 302,
@@ -238,12 +260,13 @@
 	"expanded_folders":
 	[
 		"/C/Users/Ursula/workspace/weather_app",
-		"/C/Users/Ursula/workspace/weather_app/jQuery version",
 		"/C/Users/Ursula/workspace/weather_app/react-weather-app",
-		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src"
+		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src",
+		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src/images"
 	],
 	"file_history":
 	[
+		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src/components/DefaultForecast.js",
 		"/C/Users/Ursula/workspace/weather_app/jQuery version/weather.html",
 		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src/index.css",
 		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src/components/CurrentDate.js",
@@ -418,15 +441,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2766,
+						"buffer_size": 3424,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2529,
-								2713
+								1676,
+								1676
 							]
 						],
 						"settings":
@@ -436,7 +459,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -444,28 +467,29 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/components/DefaultForecast.js",
+					"file": "src/index.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 858,
+						"buffer_size": 1102,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								858
+								669,
+								669
 							]
 						],
 						"settings":
 						{
-							"auto_name": "DefaultForecast.js",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -484,8 +508,8 @@
 						"selection":
 						[
 							[
-								2333,
-								2203
+								5239,
+								5239
 							]
 						],
 						"settings":
@@ -493,14 +517,71 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 84.0,
-						"translation.y": 945.0,
+						"translation.y": 1215.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Ursula/workspace/weather_app/jQuery version/weather.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4956,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Ursula/workspace/weather_app/jQuery version/weather.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2040,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								762,
+								789
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "src/icon.json",
 					"semi_transient": false,
 					"settings":
@@ -526,11 +607,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "src/reducers/reducer_default_location.js",
 					"semi_transient": false,
 					"settings":
@@ -554,11 +635,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "src/reducers/index.js",
 					"semi_transient": false,
 					"settings":
@@ -582,11 +663,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "src/index.js",
 					"semi_transient": false,
 					"settings":
@@ -598,8 +679,8 @@
 						"selection":
 						[
 							[
-								256,
-								256
+								437,
+								437
 							]
 						],
 						"settings":
@@ -610,7 +691,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

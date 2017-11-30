@@ -13,6 +13,7 @@ ReactDOM.render(
 				<Route path="/forecast/:city" />
 			</div>
 		</Router>
+
 , document.getElementById('root'));
 
 registerServiceWorker();

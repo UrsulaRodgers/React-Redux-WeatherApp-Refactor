@@ -147,8 +147,26 @@
 			"file": "src/components/Default.js",
 			"settings":
 			{
-				"buffer_size": 3424,
+				"buffer_size": 2782,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/DefaultForecast.js",
+			"settings":
+			{
+				"buffer_size": 823,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "DefaultForecast.js"
+			}
+		},
+		{
+			"file": "src/components/CurrentDate.js",
+			"settings":
+			{
+				"buffer_size": 319,
 				"line_ending": "Windows"
 			}
 		},
@@ -221,7 +239,7 @@
 			"file": "src/index.js",
 			"settings":
 			{
-				"buffer_size": 464,
+				"buffer_size": 465,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -262,6 +280,7 @@
 		"/C/Users/Ursula/workspace/weather_app",
 		"/C/Users/Ursula/workspace/weather_app/react-weather-app",
 		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src",
+		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src/components",
 		"/C/Users/Ursula/workspace/weather_app/react-weather-app/src/images"
 	],
 	"file_history":
@@ -432,7 +451,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -441,15 +460,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3424,
+						"buffer_size": 2782,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1676,
-								1676
+								2780,
+								2780
 							]
 						],
 						"settings":
@@ -462,11 +481,69 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "src/components/DefaultForecast.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 823,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								823,
+								823
+							]
+						],
+						"settings":
+						{
+							"auto_name": "DefaultForecast.js",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/components/CurrentDate.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								319,
+								319
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "src/index.css",
 					"semi_transient": false,
 					"settings":
@@ -478,8 +555,8 @@
 						"selection":
 						[
 							[
-								669,
-								669
+								833,
+								833
 							]
 						],
 						"settings":
@@ -489,14 +566,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 495.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "/C/Users/Ursula/workspace/weather_app/jQuery version/weather.js",
 					"semi_transient": false,
 					"settings":
@@ -520,11 +597,11 @@
 						"translation.y": 1215.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "/C/Users/Ursula/workspace/weather_app/jQuery version/weather.html",
 					"semi_transient": false,
 					"settings":
@@ -548,11 +625,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "/C/Users/Ursula/workspace/weather_app/jQuery version/weather.css",
 					"semi_transient": false,
 					"settings":
@@ -577,11 +654,11 @@
 						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "src/icon.json",
 					"semi_transient": false,
 					"settings":
@@ -607,11 +684,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "src/reducers/reducer_default_location.js",
 					"semi_transient": false,
 					"settings":
@@ -635,11 +712,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "src/reducers/index.js",
 					"semi_transient": false,
 					"settings":
@@ -663,24 +740,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "src/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 464,
+						"buffer_size": 465,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								437,
-								437
+								401,
+								401
 							]
 						],
 						"settings":
@@ -691,7 +768,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]

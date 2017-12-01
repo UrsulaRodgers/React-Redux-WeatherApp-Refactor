@@ -17,7 +17,8 @@ class Default extends Component {
   		country: '',
   		currentTemp:'',
   		icon: icon,
-      forecast: []
+      forecast: [],
+      fahrenheit:false
   	};
 
   }
@@ -45,22 +46,45 @@ class Default extends Component {
   	});
   }
 
+  toggleUnits = () => {
+
+    const toggle = this.state.fahrenheit;
+
+    this.setState({
+      fahrenheit: !toggle,
+      currentTempF: Math.round((this.state.currentTemp)*1.8+32),
+      minTempF: Math.round((this.state.minTemp)*1.8+32),
+      maxTempF: Math.round((this.state.maxTemp)*1.8+32)
+    });
+  }
+
   render() {
-   console.log(this.state.forecast)
 
     return (
-      <div className="container">
+      <div className="container text-center">
         <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>
         <h5 className="text-center"><i><CurrentDate /></i></h5><br />
+        <button className="text-center btn btn-warning" onClick={() => this.toggleUnits()}>
+          {this.state.fahrenheit ? <div>&#8451;</div>: <div>&#8457;</div>}
+        </button>
         <div className="row">
         	<div className="col-6 my-auto">
         		<img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
         	</div>
         	<div className="col-6">
         		<div className="text-center right-panel">
-        			<span className="currentTemp">{this.state.currentTemp}&#8451;</span>
-        			<p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTemp}</span>
-        			&nbsp;<span><strong>LOW</strong> {this.state.minTemp}</span></p>
+              {this.state.fahrenheit 
+        			? <div>
+                  <span className="currentTemp">{this.state.currentTempF}&#8457;</span>
+                  <p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTempF}</span>
+                  &nbsp;<span><strong>LOW</strong> {this.state.minTempF}</span></p>
+                </div>
+              : <div>
+                  <span className="currentTemp">{this.state.currentTemp}&#8451;</span>
+                  <p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTemp}</span>
+                  &nbsp;<span><strong>LOW</strong> {this.state.minTemp}</span></p>
+                </div>
+              }
         			<p className="description">{this.state.description}</p>
         			<p className="otherIcons"><img src={wind}/>
 					     &nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
@@ -69,7 +93,11 @@ class Default extends Component {
         	</div>
         </div>
         <div className="row forecast">
-          <Forecast forecast={this.state.forecast} icon={this.state.icon} />
+          <Forecast 
+            forecast={this.state.forecast} 
+            icon={this.state.icon} 
+            units={this.state.fahrenheit} 
+          />
         </div>
       </div>
     );

@@ -7,7 +7,7 @@ import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
 import Forecast from './DefaultForecast';
 
-const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
+const API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
 class Default extends Component {
   constructor (props) {

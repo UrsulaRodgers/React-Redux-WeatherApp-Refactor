@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import CurrentDate from './CurrentDate';
 import icon from '../icon.json';
 import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
 import Forecast from './DefaultForecast';
 
-const API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
 
 class Default extends Component {
   constructor (props) {
@@ -18,20 +19,29 @@ class Default extends Component {
   		currentTemp:'',
   		icon: icon,
       forecast: [],
-      fahrenheit:false
+      fahrenheit:false,
+      error: false
   	};
 
   }
 
   async componentDidMount() {
 
-  	const location = await axios.get('http://ip-api.com/json');
+  	const location = await axios.get('http://ip-api.com/json')
+                                .catch(error => {
+                                  this.setState({error: true});
+                                });
   	const lat = location.data.lat;
   	const lon = location.data.lon;
-  	const currentWeather = await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
-    const forecast = await axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${API_KEY}`);
+  	const currentWeather = await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+                                      .catch(error => {
+                                        this.setState({error: true});
+                                      });
+    const forecast = await axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${API_KEY}`)
+                                .catch(error => {
+                                    this.setState({error: true});
+                                });
 
-  	
   	this.setState ({
   		currentLocation: location.data.city,
   		country: location.data.countryCode,
@@ -59,19 +69,29 @@ class Default extends Component {
   }
 
   render() {
-
     return (
       <div className="container text-center">
-        <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>
-        <h5 className="text-center"><i><CurrentDate /></i></h5><br />
+        {this.state.error ? 
+          <h2 className="text-center">Can't get your location</h2> : 
+          <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>}
+        <h5 className="text-center">
+          <i><CurrentDate /></i>
+        </h5>
+        <br />
         <button className="text-center btn btn-warning" onClick={() => this.toggleUnits()}>
           {this.state.fahrenheit ? <div>&#8451;</div>: <div>&#8457;</div>}
         </button>
-        <div className="row">
-        	<div className="col-6 my-auto">
-        		<img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
-        	</div>
-        	<div className="col-6">
+        {this.state.error
+        ? <div className="row">
+            <div className="col-12 text-center">
+              <p>Can't retrieve current weather conditions at the moment.</p>
+            </div>
+          </div> 
+        : <div className="row">
+        	 <div className="col-6 my-auto">
+        		  <img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
+        	 </div>
+        	 <div className="col-6">
         		<div className="text-center right-panel">
               {this.state.fahrenheit 
         			? <div>
@@ -89,16 +109,24 @@ class Default extends Component {
         			<p className="otherIcons"><img src={wind}/>
 					     &nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
 					     <span>{this.state.humidity}</span></p>
-				    </div>
-        	</div>
-        </div>
-        <div className="row forecast">
-          <Forecast 
-            forecast={this.state.forecast} 
-            icon={this.state.icon} 
-            units={this.state.fahrenheit} 
-          />
-        </div>
+				      </div>
+        	 </div>
+          </div>
+        }
+        {this.state.error
+        ? <div className="row">
+            <div className="col-12 text-center">
+              <p>Can't retrieve forecast data at the moment.</p>
+            </div>
+          </div>
+        : <div className="row forecast">
+            <Forecast 
+              forecast={this.state.forecast} 
+              icon={this.state.icon} 
+              units={this.state.fahrenheit} 
+            />
+          </div>
+        }
       </div>
     );
   }

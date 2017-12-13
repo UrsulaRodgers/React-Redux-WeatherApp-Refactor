@@ -14,46 +14,58 @@ class Default extends Component {
   	super(props)
 
   	this.state = {
-  		currentLocation: '',
-  		country: '',
-  		currentTemp:'',
+  		currentLocation: null,
+  		country: null,
+      lat: null,
+      lon: null,
+  		currentTemp: null,
   		icon: icon,
       forecast: [],
       fahrenheit:false,
-      error: false
+      locationError: false,
+      currentWeatherError: false,
+      forecastError: false
   	};
 
   }
 
-  async componentDidMount() {
+  componentDidMount() {
 
-  	const location = await axios.get('http://ip-api.com/json')
-                                .catch(error => {
-                                  this.setState({error: true});
-                                });
-  	const lat = location.data.lat;
-  	const lon = location.data.lon;
-  	const currentWeather = await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
-                                      .catch(error => {
-                                        this.setState({error: true});
-                                      });
-    const forecast = await axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${API_KEY}`)
-                                .catch(error => {
-                                    this.setState({error: true});
-                                });
+    axios.get('http://ip-api.com/json')
+         .then(location => {
+            this.setState({
+              currentLocation: location.data.city,
+              country: location.data.countryCode,
+              lat: location.data.lat,
+              lon: location.data.lon
+            });
+            axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.lon}&appid=${API_KEY}`)
+                 .then(currentWeather => {
+                    this.setState({
+                      currentTemp: Math.round(currentWeather.data.main.temp - 273),
+                      minTemp: Math.round(currentWeather.data.main.temp_min - 273),
+                      maxTemp: Math.round(currentWeather.data.main.temp_max - 273),
+                      wind: currentWeather.data.wind.speed,
+                      humidity: currentWeather.data.main.humidity,
+                      weatherIcon: currentWeather.data.weather[0].icon,
+                      description: currentWeather.data.weather[0].main
+                    });
+                    axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${this.state.lat}&lon=${this.state.lon}&cnt=7&appid=${API_KEY}`)
+                         .then(forecast => {
+                            this.setState({forecast: forecast.data.list});
+                          })
+                         .catch(error=>{
+                            this.setState({forecastError: true});
+                          });
+                    })
+                   .catch(error=>{
+                      this.setState({currentWeatherError: true});
+                   });
+          })
+         .catch(error=>{
+            this.setState({locationError: true});
+    });
 
-  	this.setState ({
-  		currentLocation: location.data.city,
-  		country: location.data.countryCode,
-  		currentTemp: Math.round(currentWeather.data.main.temp - 273),
-  		minTemp: Math.round(currentWeather.data.main.temp_min - 273),
-  		maxTemp: Math.round(currentWeather.data.main.temp_max - 273),
-  		wind: currentWeather.data.wind.speed,
-  		humidity: currentWeather.data.main.humidity,
-  		weatherIcon: currentWeather.data.weather[0].icon,
-  		description: currentWeather.data.weather[0].main,
-      forecast: forecast.data.list
-  	});
   }
 
   toggleUnits = () => {
@@ -71,7 +83,7 @@ class Default extends Component {
   render() {
     return (
       <div className="container text-center">
-        {this.state.error ? 
+        {this.state.locationError ? 
           <h2 className="text-center">Can't get your location</h2> : 
           <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>}
         <h5 className="text-center">
@@ -81,10 +93,10 @@ class Default extends Component {
         <button className="text-center btn btn-warning" onClick={() => this.toggleUnits()}>
           {this.state.fahrenheit ? <div>&#8451;</div>: <div>&#8457;</div>}
         </button>
-        {this.state.error
+        {this.state.currentWeatherError
         ? <div className="row">
             <div className="col-12 text-center">
-              <p>Can't retrieve current weather conditions at the moment.</p>
+              <p>Can't retrieve weather conditions at the moment.</p>
             </div>
           </div> 
         : <div className="row">
@@ -113,7 +125,7 @@ class Default extends Component {
         	 </div>
           </div>
         }
-        {this.state.error
+        {this.state.forecastError
         ? <div className="row">
             <div className="col-12 text-center">
               <p>Can't retrieve forecast data at the moment.</p>

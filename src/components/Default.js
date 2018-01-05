@@ -5,7 +5,7 @@ import CurrentDate from './CurrentDate';
 import icon from '../icon.json';
 import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
-import Forecast from './DefaultForecast';
+import Forecast from './Forecast';
 
 const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
 
@@ -81,32 +81,28 @@ class Default extends Component {
   }
 
   render() {
-    return (
-      <div className="container text-center">
-        {this.state.locationError ? 
+
+    const setLocation = (
+      this.state.locationError ? 
           <h2 className="text-center">Can't get your location</h2> : 
-          <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>}
-        <h5 className="text-center">
-          <i><CurrentDate /></i>
-        </h5>
-        <br />
-        <button className="text-center btn btn-warning" onClick={() => this.toggleUnits()}>
-          {this.state.fahrenheit ? <div>&#8451;</div>: <div>&#8457;</div>}
-        </button>
-        {this.state.currentWeatherError
+          <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>
+    );
+
+    const currentWeather = (
+      this.state.currentWeatherError
         ? <div className="row">
             <div className="col-12 text-center">
               <p>Can't retrieve weather conditions at the moment.</p>
             </div>
           </div> 
         : <div className="row">
-        	 <div className="col-6 my-auto">
-        		  <img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
-        	 </div>
-        	 <div className="col-6">
-        		<div className="text-center right-panel">
+           <div className="col-6 my-auto">
+              <img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
+           </div>
+           <div className="col-6">
+            <div className="text-center right-panel">
               {this.state.fahrenheit 
-        			? <div>
+              ? <div>
                   <span className="currentTemp">{this.state.currentTempF}&#8457;</span>
                   <p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTempF}</span>
                   &nbsp;<span><strong>LOW</strong> {this.state.minTempF}</span></p>
@@ -117,15 +113,18 @@ class Default extends Component {
                   &nbsp;<span><strong>LOW</strong> {this.state.minTemp}</span></p>
                 </div>
               }
-        			<p className="description">{this.state.description}</p>
-        			<p className="otherIcons"><img src={wind}/>
-					     &nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
-					     <span>{this.state.humidity}</span></p>
-				      </div>
-        	 </div>
+              <p className="description">{this.state.description}</p>
+              <p className="otherIcons"><img src={wind}/>
+               &nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
+               <span>{this.state.humidity}</span></p>
+              </div>
+           </div>
           </div>
-        }
-        {this.state.forecastError
+        
+    );
+
+    const forecast = (
+      this.state.forecastError
         ? <div className="row">
             <div className="col-12 text-center">
               <p>Can't retrieve forecast data at the moment.</p>
@@ -138,7 +137,20 @@ class Default extends Component {
               units={this.state.fahrenheit} 
             />
           </div>
-        }
+    );
+
+    return (
+      <div className="container text-center">
+        {setLocation}
+        <h5 className="text-center">
+          <i><CurrentDate /></i>
+        </h5>
+        <br />
+        <button className="text-center btn btn-warning" onClick={() => this.toggleUnits()}>
+          {this.state.fahrenheit ? <div>&#8451;</div>: <div>&#8457;</div>}
+        </button>
+        {currentWeather}
+        {forecast}
       </div>
     );
   }

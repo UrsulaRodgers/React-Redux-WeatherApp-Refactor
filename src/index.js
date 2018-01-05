@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+//import { createStore } from 'redux';
+//import { Provider } from 'react-redux';
 import './index.css';
 import Default from './components/Default';
 import registerServiceWorker from './registerServiceWorker';
 
+//const store = createStore();
 
 ReactDOM.render(
-		<Router>
 			<div>
-				<Route exact path="/" component={Default} />
-				<Route path="/forecast/:city" />
+				<Default />
 			</div>
-		</Router>
 
 , document.getElementById('root'));
 

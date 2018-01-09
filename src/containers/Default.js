@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/default_actions';
 
-import CurrentDate from './CurrentDate';
+import CurrentDate from '../components/CurrentDate';
 import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
-import Forecast from './Forecast';
+import Forecast from '../components/Forecast';
+import Units from '../components/Units';
+import SearchBar from './Searchbar';
 
 //const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
 
@@ -95,13 +97,15 @@ class Default extends Component {
     return (
       <div className="container text-center">
         {setLocation}
+        <SearchBar />
         <h5 className="text-center">
           <i><CurrentDate /></i>
         </h5>
         <br />
-        <button className="text-center btn btn-warning" onClick={() => this.toggleUnits()}>
-          {this.state.fahrenheit ? <div>&#8451;</div>: <div>&#8457;</div>}
-        </button>
+        <Units 
+          fahrenheit={this.state.fahrenheit}
+          toggleUnits={this.toggleUnits}
+        />
         {currentWeather}
         {forecast}
       </div>

@@ -7,7 +7,6 @@ import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
 import Forecast from '../components/Forecast';
 import Units from '../components/Units';
-import SearchBar from './Searchbar';
 
 class Default extends Component {
 
@@ -95,7 +94,6 @@ class Default extends Component {
     return (
       <div className="container text-center">
         {setLocation}
-        <SearchBar />
         <h5 className="text-center">
           <i><CurrentDate /></i>
         </h5>

@@ -9,8 +9,6 @@ import Forecast from '../components/Forecast';
 import Units from '../components/Units';
 import SearchBar from './Searchbar';
 
-//const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
-
 class Default extends Component {
 
   state = {

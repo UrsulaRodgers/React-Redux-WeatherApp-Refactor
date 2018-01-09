@@ -1,95 +1,48 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/default_actions';
 
 import CurrentDate from './CurrentDate';
-import icon from '../icon.json';
 import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
 import Forecast from './Forecast';
 
-const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
+//const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
 
 class Default extends Component {
-  constructor (props) {
-  	super(props)
 
-  	this.state = {
-  		currentLocation: null,
-  		country: null,
-      lat: null,
-      lon: null,
-  		currentTemp: null,
-  		icon: icon,
-      forecast: [],
-      fahrenheit:false,
-      locationError: false,
-      currentWeatherError: false,
-      forecastError: false
-  	};
-
+  state = {
+    fahrenheit: false
   }
 
   componentDidMount() {
 
-    axios.get('http://ip-api.com/json')
-         .then(location => {
-            this.setState({
-              currentLocation: location.data.city,
-              country: location.data.countryCode,
-              lat: location.data.lat,
-              lon: location.data.lon
-            });
-            axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.lon}&appid=${API_KEY}`)
-                 .then(currentWeather => {
-                    this.setState({
-                      currentTemp: Math.round(currentWeather.data.main.temp - 273),
-                      minTemp: Math.round(currentWeather.data.main.temp_min - 273),
-                      maxTemp: Math.round(currentWeather.data.main.temp_max - 273),
-                      wind: currentWeather.data.wind.speed,
-                      humidity: currentWeather.data.main.humidity,
-                      weatherIcon: currentWeather.data.weather[0].icon,
-                      description: currentWeather.data.weather[0].main
-                    });
-                    axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${this.state.lat}&lon=${this.state.lon}&cnt=7&appid=${API_KEY}`)
-                         .then(forecast => {
-                            this.setState({forecast: forecast.data.list});
-                          })
-                         .catch(error=>{
-                            this.setState({forecastError: true});
-                          });
-                    })
-                   .catch(error=>{
-                      this.setState({currentWeatherError: true});
-                   });
-          })
-         .catch(error=>{
-            this.setState({locationError: true});
-    });
+    this.props.getCurrentLocation();
 
   }
 
-  toggleUnits = () => {
+ toggleUnits = () => {
 
     const toggle = this.state.fahrenheit;
 
     this.setState({
       fahrenheit: !toggle,
-      currentTempF: Math.round((this.state.currentTemp)*1.8+32),
-      minTempF: Math.round((this.state.minTemp)*1.8+32),
-      maxTempF: Math.round((this.state.maxTemp)*1.8+32)
+      currentTempF: Math.round((this.props.currentTemp)*1.8+32),
+      minTempF: Math.round((this.props.minTemp)*1.8+32),
+      maxTempF: Math.round((this.props.maxTemp)*1.8+32)
     });
   }
 
   render() {
 
     const setLocation = (
-      this.state.locationError ? 
+      this.props.error ? 
           <h2 className="text-center">Can't get your location</h2> : 
-          <h2 className="text-center">{this.state.currentLocation}, {this.state.country}</h2>
+          <h2 className="text-center">{this.props.city}, {this.props.country}</h2>
     );
 
     const currentWeather = (
-      this.state.currentWeatherError
+      this.props.error
         ? <div className="row">
             <div className="col-12 text-center">
               <p>Can't retrieve weather conditions at the moment.</p>
@@ -97,7 +50,7 @@ class Default extends Component {
           </div> 
         : <div className="row">
            <div className="col-6 my-auto">
-              <img className="weatherIcon" alt={this.state.description} src={this.state.icon[this.state.weatherIcon]} />
+              <img className="weatherIcon" alt={this.props.description} src={this.props.icon[this.props.weatherIcon]} />
            </div>
            <div className="col-6">
             <div className="text-center right-panel">
@@ -108,15 +61,15 @@ class Default extends Component {
                   &nbsp;<span><strong>LOW</strong> {this.state.minTempF}</span></p>
                 </div>
               : <div>
-                  <span className="currentTemp">{this.state.currentTemp}&#8451;</span>
-                  <p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTemp}</span>
-                  &nbsp;<span><strong>LOW</strong> {this.state.minTemp}</span></p>
+                  <span className="currentTemp">{this.props.currentTemp}&#8451;</span>
+                  <p className="maxMin"><span><strong>HIGH</strong> {this.props.maxTemp}</span>
+                  &nbsp;<span><strong>LOW</strong> {this.props.minTemp}</span></p>
                 </div>
               }
-              <p className="description">{this.state.description}</p>
+              <p className="description">{this.props.description}</p>
               <p className="otherIcons"><img src={wind}/>
-               &nbsp;<span>{this.state.wind} mph</span> | <img src={humidity}/>
-               <span>{this.state.humidity}</span></p>
+               &nbsp;<span>{this.props.wind} mph</span> | <img src={humidity}/>
+               <span>{this.props.humidity}</span></p>
               </div>
            </div>
           </div>
@@ -124,7 +77,7 @@ class Default extends Component {
     );
 
     const forecast = (
-      this.state.forecastError
+      this.props.error
         ? <div className="row">
             <div className="col-12 text-center">
               <p>Can't retrieve forecast data at the moment.</p>
@@ -132,8 +85,8 @@ class Default extends Component {
           </div>
         : <div className="row forecast">
             <Forecast 
-              forecast={this.state.forecast} 
-              icon={this.state.icon} 
+              forecast={this.props.forecast} 
+              icon={this.props.icon} 
               units={this.state.fahrenheit} 
             />
           </div>
@@ -156,5 +109,28 @@ class Default extends Component {
   }
 }
 
-export default Default;
+const mapStateToProps = state => {
+  return {
+    error: state.loadingError,
+    city: state.city,
+    country: state.country,
+    description: state.description,
+    icon: state.icon,
+    weatherIcon: state.weatherIcon,
+    currentTemp: state.currentTemp,
+    minTemp: state.minTemp,
+    maxTemp: state.maxTemp,
+    wind: state.wind,
+    humidity: state.humidity,
+    forecast: state.forecast
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+     getCurrentLocation: () => dispatch(actions.currentLocation())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Default);
 

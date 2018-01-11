@@ -25,11 +25,10 @@ export const currentWeather = (location) => {
     return dispatch => {
         axios.get(CURRENT_URL)
             .then(weather => {
-                console.log(weather)
-                dispatch({type: actionTypes.GET_CURRENTLOCALWEATHER_SUCCESS, weather});
+                dispatch({type: actionTypes.GET_WEATHER_SUCCESS, weather});
             })
             .catch(error=>{
-            dispatch({type: actionTypes.WEATHER_ERROR_MESSAGE, error});
+            dispatch({type: actionTypes.GET_WEATHER_ERROR, error});
             });
     };
 };
@@ -44,11 +43,10 @@ export const localForecast = (location) => {
     return dispatch => {
         axios.get(FORECAST_URL)
             .then(forecast => {
-                console.log(forecast)
-                dispatch({type: actionTypes.GET_LOCALFORECAST_SUCCESS, forecast});
+                dispatch({type: actionTypes.GET_FORECAST_SUCCESS, forecast});
             })
             .catch(error=>{
-            dispatch({type: actionTypes.FORECAST_ERROR_MESSAGE, error});
+            dispatch({type: actionTypes.GET_FORECAST_ERROR, error});
             });
     };
 }

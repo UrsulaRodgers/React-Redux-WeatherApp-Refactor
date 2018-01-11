@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/default_actions';
 
 import CurrentDate from '../components/CurrentDate';
-import wind from '../images/wind_24.png';
-import humidity from '../images/humidity.png';
 import Forecast from '../components/Forecast';
 import Units from '../components/Units';
+import SearchBar from './Searchbar';
+import Location from '../components/Location';
+import CurrentWeather from '../components/CurrentWeather';
 
 class Default extends Component {
 
@@ -34,66 +35,10 @@ class Default extends Component {
 
   render() {
 
-    const setLocation = (
-      this.props.error ? 
-          <h2 className="text-center">Can't get your location</h2> : 
-          <h2 className="text-center">{this.props.city}, {this.props.country}</h2>
-    );
-
-    const currentWeather = (
-      this.props.error
-        ? <div className="row">
-            <div className="col-12 text-center">
-              <p>Can't retrieve weather conditions at the moment.</p>
-            </div>
-          </div> 
-        : <div className="row">
-           <div className="col-6 my-auto">
-              <img className="weatherIcon" alt={this.props.description} src={this.props.icon[this.props.weatherIcon]} />
-           </div>
-           <div className="col-6">
-            <div className="text-center right-panel">
-              {this.state.fahrenheit 
-              ? <div>
-                  <span className="currentTemp">{this.state.currentTempF}&#8457;</span>
-                  <p className="maxMin"><span><strong>HIGH</strong> {this.state.maxTempF}</span>
-                  &nbsp;<span><strong>LOW</strong> {this.state.minTempF}</span></p>
-                </div>
-              : <div>
-                  <span className="currentTemp">{this.props.currentTemp}&#8451;</span>
-                  <p className="maxMin"><span><strong>HIGH</strong> {this.props.maxTemp}</span>
-                  &nbsp;<span><strong>LOW</strong> {this.props.minTemp}</span></p>
-                </div>
-              }
-              <p className="description">{this.props.description}</p>
-              <p className="otherIcons"><img src={wind}/>
-               &nbsp;<span>{this.props.wind} mph</span> | <img src={humidity}/>
-               <span>{this.props.humidity}</span></p>
-              </div>
-           </div>
-          </div>
-        
-    );
-
-    const forecast = (
-      this.props.error
-        ? <div className="row">
-            <div className="col-12 text-center">
-              <p>Can't retrieve forecast data at the moment.</p>
-            </div>
-          </div>
-        : <div className="row forecast">
-            <Forecast 
-              forecast={this.props.forecast} 
-              icon={this.props.icon} 
-              units={this.state.fahrenheit} 
-            />
-          </div>
-    );
-
     return (
       <div className="container text-center">
-        {setLocation}
+        <Location error={this.props.error} city={this.props.city} country={this.props.country}/>
+        <SearchBar />
         <h5 className="text-center">
           <i><CurrentDate /></i>
         </h5>
@@ -102,8 +47,27 @@ class Default extends Component {
           fahrenheit={this.state.fahrenheit}
           toggleUnits={this.toggleUnits}
         />
-        {currentWeather}
-        {forecast}
+        <CurrentWeather 
+          error={this.props.error}
+          description={this.props.description}
+          icon={this.props.icon}
+          weatherIcon={this.props.weatherIcon}
+          currentTemp={this.props.currentTemp}
+          maxTemp={this.props.maxTemp}
+          minTemp={this.props.minTemp}
+          wind={this.props.wind}
+          humidity={this.props.humidity}
+          fahrenheit={this.state.fahrenheit}
+          currentTempF={this.state.currentTempF}
+          minTempF={this.state.minTempF}
+          maxTempF={this.state.maxTempF}
+        />
+        <Forecast 
+          forecast={this.props.forecast} 
+          icon={this.props.icon} 
+          units={this.state.fahrenheit}
+          error={this.props.error}
+        /> 
       </div>
     );
   }
@@ -111,18 +75,18 @@ class Default extends Component {
 
 const mapStateToProps = state => {
   return {
-    error: state.loadingError,
-    city: state.city,
-    country: state.country,
-    description: state.description,
-    icon: state.icon,
-    weatherIcon: state.weatherIcon,
-    currentTemp: state.currentTemp,
-    minTemp: state.minTemp,
-    maxTemp: state.maxTemp,
-    wind: state.wind,
-    humidity: state.humidity,
-    forecast: state.forecast
+    error:state.default.loadingError,
+    city: state.default.city,
+    country: state.default.country,
+    description: state.default.description,
+    icon: state.default.icon,
+    weatherIcon: state.default.weatherIcon,
+    currentTemp: state.default.currentTemp,
+    minTemp: state.default.minTemp,
+    maxTemp: state.default.maxTemp,
+    wind: state.default.wind,
+    humidity: state.default.humidity,
+    forecast: state.default.forecast
   };
 };
 

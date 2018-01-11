@@ -3,8 +3,15 @@ import React from 'react';
 const Forecast = (props) => {
 	return(
 
-		props.forecast.slice(1).map((value,index) => {
-			return (
+    props.error 
+    ? <div className="row">
+          <div className="col-12 text-center">
+            <p>Can't retrieve forecast data at the moment.</p>
+          </div>
+      </div>
+    : <div className="row forecast">
+		    {props.forecast.slice(1).map((value,index) => {
+			     return (
           		<div className="col-md-2 text-center" key={index}>
             		<div>
               			<strong>{(new Date(value.dt*1000)).toDateString().substring(0,3)}</strong>
@@ -27,8 +34,9 @@ const Forecast = (props) => {
                     }
               		</div>
             	</div>
-        	)
-    	})
+        	 )
+    	   })}
+      </div>
     );
 }
 

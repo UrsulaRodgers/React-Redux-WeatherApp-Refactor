@@ -4,7 +4,6 @@ import icon from '../../icon.json';
 const initialState = {
 	city: '',
 	country: '',
-	weather: '',
   	icon: icon,
   	description: '',
   	weatherIcon: null,
@@ -17,9 +16,9 @@ const initialState = {
     loadingError: false
 }
 
-const reducer = (state = initialState, action) => {
+const defaultReducer = (state = initialState, action) => {
 	switch(action.type){
-		case actionTypes.GET_CURRENTLOCALWEATHER_SUCCESS:
+		case actionTypes.GET_WEATHER_SUCCESS:
 			return{
 			  ...state,
 			  city: action.weather.data.name,
@@ -34,7 +33,7 @@ const reducer = (state = initialState, action) => {
               humidity: action.weather.data.main.humidity,
               error: false
 			};
-		case actionTypes.GET_LOCALFORECAST_SUCCESS: 
+		case actionTypes.GET_FORECAST_SUCCESS: 
 			return {
 				...state,
 				forecast: action.forecast.data.list
@@ -45,13 +44,13 @@ const reducer = (state = initialState, action) => {
 				error: action.error,
 				loadingError: true
 			};
-		case actionTypes.WEATHER_ERROR_MESSAGE:
+		case actionTypes.GET_WEATHER_ERROR:
 			return {
 				...state,
 				error:action.error,
 				loadingError: true
 			};
-		case actionTypes.FORECAST_ERROR_MESSAGE:
+		case actionTypes.GET_FORECAST_ERROR:
 			return {
 				...state,
 				error: action.error,
@@ -61,4 +60,4 @@ const reducer = (state = initialState, action) => {
 	return state;
 }
 
-export default reducer;
+export default defaultReducer;

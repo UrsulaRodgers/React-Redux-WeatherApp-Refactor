@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../store/actions';
 
 import SearchBar from './Searchbar';
 import CurrentDate from '../components/CurrentDate';
@@ -7,40 +8,29 @@ import Units from '../components/Units';
 import wind from '../images/wind_24.png';
 import humidity from '../images/humidity.png';
 import Forecast from '../components/Forecast';
-import Location from '../components/Location';
 import CurrentWeather from '../components/CurrentWeather';
 
 class SearchResult extends Component {
 
-	state = {
-		fahrenheit: false
-	}
-
-	toggleUnits = () => {
-
-    const toggle = this.state.fahrenheit;
-
-    this.setState({
-      fahrenheit: !toggle,
-      currentTempF: Math.round((this.props.currentTemp)*1.8+32),
-      minTempF: Math.round((this.props.minTemp)*1.8+32),
-      maxTempF: Math.round((this.props.maxTemp)*1.8+32)
-    });
-  	}
-
 	render() {
+
+		const setSearchLocation = (
+        	this.props.error ? 
+          		<h2 className="text-center">Enter a valid location</h2> : 
+          		<h2 className="text-center">{this.props.city}, {this.props.country}</h2>
+    	);
 
 		return (
 			 <div className="container text-center">
-        		<Location error={this.props.error} city={this.props.city} country={this.props.country}/>
+        		{setSearchLocation}
         		<SearchBar />
         		<h5 className="text-center">
           			<i><CurrentDate /></i>
         		</h5>
         		<br />
         		<Units 
-          			fahrenheit={this.state.fahrenheit}
-          			toggleUnits={this.toggleUnits}
+          			fahrenheit={this.props.fahrenheit}
+          			toggleUnits={this.props.toggleUnits}
         		/>
         		<CurrentWeather
         			error={this.props.error}
@@ -52,15 +42,15 @@ class SearchResult extends Component {
           			minTemp={this.props.minTemp}
           			wind={this.props.wind}
           			humidity={this.props.humidity}
-          			fahrenheit={this.state.fahrenheit}
-          			currentTempF={this.state.currentTempF}
-	          		minTempF={this.state.minTempF}
-	          		maxTempF={this.state.maxTempF}
+          			fahrenheit={this.props.fahrenheit}
+          			currentTempF={this.props.currentTempF}
+	          		minTempF={this.props.minTempF}
+	          		maxTempF={this.props.maxTempF}
         		 />
         		<Forecast 
           			forecast={this.props.forecast} 
           			icon={this.props.icon} 
-          			units={this.state.fahrenheit}
+          			units={this.props.fahrenheit}
           			error={this.props.error}
         		/> 
       		</div>
@@ -70,18 +60,28 @@ class SearchResult extends Component {
 
 const mapStateToProps = state => {
 	return {
-		error:state.default.loadingError,
-    	city: state.default.city,
-    	country: state.default.country,
-		description: state.default.description,
-    	icon: state.default.icon,
-    	weatherIcon: state.default.weatherIcon,
-   	 	currentTemp: state.default.currentTemp,
-    	minTemp: state.default.minTemp,
-    	maxTemp: state.default.maxTemp,
-    	wind: state.default.wind,
-    	humidity: state.default.humidity,
-    	forecast: state.default.forecast
+		error:state.loadingError,
+    	city: state.city,
+    	country: state.country,
+		description: state.description,
+    	icon: state.icon,
+    	weatherIcon: state.weatherIcon,
+   	 	currentTemp: state.currentTemp,
+   	 	currentTempF: state.currentTempF,
+    	minTemp: state.minTemp,
+    	minTempF: state.minTempF,
+    	maxTemp: state.maxTemp,
+    	maxTempF: state.maxTempF,
+    	wind: state.wind,
+    	humidity: state.humidity,
+    	forecast: state.forecast,
+    	fahrenheit: state.fahrenheit
 	}
 }
-export default connect(mapStateToProps)(SearchResult);
+
+const mapDispatchToProps = dispatch => {
+	return {
+		toggleUnits: () => dispatch(actions.toggleUnits())
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);

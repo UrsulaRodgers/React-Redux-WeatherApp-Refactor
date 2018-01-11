@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import * as actions from '../store/actions/search_actions';
+import * as actions from '../store/actions';
 
 class SearchBar extends Component {
 	constructor(props) {
@@ -13,7 +13,7 @@ class SearchBar extends Component {
 		this.onInputChange = this.onInputChange.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
-	
+
 	onInputChange(event) {
 		this.setState({term: event.target.value});
 	}

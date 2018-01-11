@@ -8,15 +8,19 @@ const initialState = {
   	description: '',
   	weatherIcon: null,
   	currentTemp: '',
+  	currentTempF:'',
   	minTemp: '',
+  	minTempF: '',
   	maxTemp: '',
+  	maxTempF: '',
   	wind: '',
   	humidity: '',
     forecast: [],
-    loadingError: false
+    loadingError: false,
+    fahrenheit: false
 }
 
-const defaultReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
 	switch(action.type){
 		case actionTypes.GET_WEATHER_SUCCESS:
 			return{
@@ -27,10 +31,14 @@ const defaultReducer = (state = initialState, action) => {
 			  description: action.weather.data.weather[0].main,
 			  weatherIcon: action.weather.data.weather[0].icon,
 			  currentTemp: Math.round(action.weather.data.main.temp - 273),
+			  currentTempF: Math.round((action.weather.data.main.temp*9/5) - 459.67),
 			  minTemp: Math.round(action.weather.data.main.temp_min - 273),
+			  minTempF: Math.round((action.weather.data.main.temp_min*9/5) - 459.67),
               maxTemp: Math.round(action.weather.data.main.temp_max - 273),
+              maxTempF: Math.round((action.weather.data.main.temp_max*9/5) - 459.67),
               wind: action.weather.data.wind.speed,
               humidity: action.weather.data.main.humidity,
+              loadingError: false,
               error: false
 			};
 		case actionTypes.GET_FORECAST_SUCCESS: 
@@ -56,8 +64,13 @@ const defaultReducer = (state = initialState, action) => {
 				error: action.error,
 				loadingError: true
 			}
+		case actionTypes.TOGGLE_UNITS:
+			return {
+				...state,
+				fahrenheit: !state.fahrenheit
+			}
 	}
 	return state;
 }
 
-export default defaultReducer;
+export default reducer;

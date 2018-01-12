@@ -11,6 +11,11 @@ body {
   max-width:100%;
 }
 
+.title {
+  margin-top: 1.5%;
+  font-family: 'Bahiana', cursive;
+  color: #FF8033;
+}
 .container {
 	position:relative;
 	top:40px;
@@ -58,7 +63,7 @@ button {
 .form-inline {
   justify-content: center;   
   margin: 10px auto;
-  width:25%;
+  max-width:50%;
 }
 
 .btn-default {

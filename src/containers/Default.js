@@ -21,7 +21,7 @@ class Default extends Component {
     const setLocation = (
         this.props.error ? 
           <h2 className="text-center">Can't retrieve location</h2> : 
-          <h2 className="text-center">{this.props.city}, {this.props.country}</h2>
+          <h2 className="text-center">{this.props.city} {this.props.country}</h2>
     );
 
     return (
@@ -29,7 +29,7 @@ class Default extends Component {
         {setLocation}
         <SearchBar />
         <h5 className="text-center">
-          <i><CurrentDate /></i>
+          <i><CurrentDate date={this.props.date}/></i>
         </h5>
         <br />
         <Units 
@@ -67,6 +67,7 @@ const mapStateToProps = state => {
     error:state.loadingError,
     city: state.city,
     country: state.country,
+    date: state.date,
     description: state.description,
     icon: state.icon,
     weatherIcon: state.weatherIcon,

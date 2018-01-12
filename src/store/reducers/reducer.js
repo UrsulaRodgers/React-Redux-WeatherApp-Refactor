@@ -28,6 +28,7 @@ const reducer = (state = initialState, action) => {
 			  city: action.weather.data.name,
 			  country: action.weather.data.sys.country,
 			  icon: icon,
+			  date: action.weather.data.dt,
 			  description: action.weather.data.weather[0].main,
 			  weatherIcon: action.weather.data.weather[0].icon,
 			  currentTemp: Math.round(action.weather.data.main.temp - 273),

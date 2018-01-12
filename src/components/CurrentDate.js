@@ -1,20 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class CurrentDate extends Component {
-	constructor(props) {
-		super(props)
-
-		var currentDate = new Date();
-
-		this.state = {
-			currentDate: currentDate.toDateString()
-		}
-	}
-	render() {
-		return (
-			<div>{this.state.currentDate}</div>
-		);
-	}
+const currentDate = (props) => {
+	return (
+			<div>{(new Date(props.date*1000)).toDateString()}</div>
+			);
 }
 
-export default CurrentDate;
+export default currentDate;

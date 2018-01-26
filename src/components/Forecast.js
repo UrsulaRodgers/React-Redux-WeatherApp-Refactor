@@ -17,7 +17,7 @@ const Forecast = (props) => {
               			<strong>{(new Date(value.dt*1000)).toDateString().substring(0,3)}</strong>
             		</div>
             		<div>
-              			<img className="forecastIcon" alt='' src={props.icon[value.weather[0].icon]} />
+              			<img className="forecastIcon" alt='weather icon' src={props.icon[value.weather[0].icon]} />
             		</div>
               		<div className="temps">
                 		{props.units

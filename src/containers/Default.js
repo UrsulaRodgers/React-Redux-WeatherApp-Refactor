@@ -25,7 +25,7 @@ class Default extends Component {
     );
 
     return (
-      <div className="container text-center">
+      <div className="text-center">
         {setLocation}
         <SearchBar />
         <h5 className="text-center">

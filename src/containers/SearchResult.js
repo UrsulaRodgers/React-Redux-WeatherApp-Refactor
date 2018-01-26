@@ -54,7 +54,7 @@ class SearchResult extends Component {
     );
 
 		return (
-			 <div className="container text-center">
+			 <div className="text-center">
         		{setSearchLocation}
         		<SearchBar />
         		<h5 className="text-center">

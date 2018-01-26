@@ -30,8 +30,8 @@ const currentWeather = (props) => {
                 </div>
               }
               <p className="description">{props.description}</p>
-              <p className="otherIcons"><img src={wind}/>
-               &nbsp;<span>{props.wind} mph</span> | <img src={humidity}/>
+              <p className="otherIcons"><img alt="wind icon" src={wind}/>
+               &nbsp;<span>{props.wind} mph</span> | <img alt="humidity icon" src={humidity}/>
                <span>{props.humidity}</span></p>
               </div>
            </div>

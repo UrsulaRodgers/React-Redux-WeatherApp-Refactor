@@ -70,8 +70,9 @@ const reducer = (state = initialState, action) => {
 				...state,
 				fahrenheit: !state.fahrenheit
 			}
+		default:
+			return state;
 	}
-	return state;
 }
 
 export default reducer;

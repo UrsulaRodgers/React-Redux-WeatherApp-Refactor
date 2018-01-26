@@ -11,11 +11,15 @@ body {
   max-width:100%;
 }
 
+.title, footer {
+  font-family: 'Bahiana', cursive;
+}
+
 .title {
   margin-top: 1.5%;
-  font-family: 'Bahiana', cursive;
   color: #FF8033;
 }
+
 .container {
 	position:relative;
 	top:40px;
@@ -43,7 +47,7 @@ button {
 }
 
 .forecast {
-  margin-top:5%;
+  margin-top:3%;
 }
 
 .temps {
@@ -70,6 +74,15 @@ button {
   margin-left: 5px;
 }
 
+footer {
+  margin-top:2.5%;
+  margin-bottom: 2.5%;
+  color: #040404;
+}
+
+a {
+  color: #FF8033;
+}
 
 /*media queries*/
 
@@ -86,7 +99,6 @@ button {
   .maxMin, .description {
     font-size:0.8em;
   }
-
 }
 
 @media (min-width: 340px) {

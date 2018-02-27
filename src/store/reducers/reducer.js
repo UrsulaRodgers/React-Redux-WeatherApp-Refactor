@@ -39,8 +39,7 @@ const reducer = (state = initialState, action) => {
               maxTempF: Math.round((action.weather.data.main.temp_max*9/5) - 459.67),
               wind: action.weather.data.wind.speed,
               humidity: action.weather.data.main.humidity,
-              loadingError: false,
-              error: false
+              loadingError: false
 			};
 		case actionTypes.GET_FORECAST_SUCCESS: 
 			return {

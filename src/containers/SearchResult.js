@@ -28,9 +28,9 @@ class SearchResult extends Component {
     );
 
     const showDate = (
-      this.props.date
-        ? <CurrentDate date={this.props.date}/>
-        : null
+      this.props.error
+        ? null
+        : <CurrentDate date={this.props.date} />
     );
 
     const changeView = (

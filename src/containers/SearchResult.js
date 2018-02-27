@@ -19,12 +19,12 @@ class SearchResult extends Component {
     	);
 
     const setButton = (
-      this.props.city && this.props.country
-        ? <Units 
+      this.props.error
+        ? null
+        : <Units 
               fahrenheit={this.props.fahrenheit}
               toggleUnits={this.props.toggleUnits}
           />
-        : null
     );
 
     const showDate = (

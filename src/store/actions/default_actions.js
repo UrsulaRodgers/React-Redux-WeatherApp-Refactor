@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-const API_KEY = '8d1dab70d6486ad4b46fe911084f46af';
+const API_KEY = '...............................';
 
 export const currentLocation = () => {
 	return dispatch => {
